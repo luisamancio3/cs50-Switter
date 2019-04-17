@@ -1,0 +1,70 @@
+<div class="flex-center-center bgc">
+  <mat-card class="flex-column-center">
+    <h3>Welcome to Switter, a twitter crawler</h3>
+    <img src="assets/twitter.jpg" alt="twitter logo" />
+    <form [formGroup]="registerForm" (ngSubmit)="signUp()" autocomplete="off">
+      <mat-form-field
+        appearance="outline"
+        color="accent"
+        class="flex-column-center"
+      >
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Email"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        color="accent"
+        class="flex-column-center"
+      >
+        <mat-label>Password</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{
+          hidePassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+        <mat-error>
+          Password do not match!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        color="accent"
+        class="flex-column-center"
+      >
+        <mat-label>Confirm Password</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Confirm Password"
+          formControlName="rePassword"
+          [type]="hideCoPassword ? 'password' : 'text'"
+        />
+        <mat-icon matSuffix (click)="hideCoPassword = !hideCoPassword">{{
+          hideCoPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        [disabled]="registerForm.invalid"
+        class="block-center"
+      >
+        Sign Up
+      </button>
+    </form>
+  </mat-card>
+</div>

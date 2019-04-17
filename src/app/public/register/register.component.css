@@ -1,0 +1,13 @@
+img{
+    width: 20%;
+}
+
+.bgc{
+    background: url(/assets/twitter-bgc.png) no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+mat-card{
+    width: 40%;
+}
