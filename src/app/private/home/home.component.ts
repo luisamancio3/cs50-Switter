@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import NgxTwitterTimelineData from 'ngx-twitter-timeline/lib/ngx-twitter-timeline-data.interface';
-import { NgxTwitterTimelineComponent } from 'ngx-twitter-timeline';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import NgxTwitterTimelineData from "ngx-twitter-timeline/lib/ngx-twitter-timeline-data.interface";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-
   queryForm: FormGroup;
- 
-  constructor(private fb: FormBuilder) { }
+  data: NgxTwitterTimelineData = {
+    screenName: `CS50`,
+    sourceType: `profile`,
+    url: ``
+  };
+  load: boolean = true;
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.createForm();
@@ -22,21 +26,15 @@ export class HomeComponent implements OnInit {
     this.queryForm = this.fb.group({
       query: "Amo_pacoca"
     });
-  }
+  };
 
-
-  mountData = () => {
-    let data: NgxTwitterTimelineData = { screenName: this.data, sourceType: `profile`, url: `` };
-    return data
-  }
-
-  get data() {
+  updateData = async () => {
+    this.data.screenName = this.queryForm.get(`query`).value;
+    this.load = false;
     setTimeout(() => {
-    }, 1000 ) 
-    return this.queryForm.get(`query`).value;
-  }
-
-  updateData(){
-    
-  }
+      this.load = true;
+      console.log(this.data);
+      
+    }, 100);
+  };
 }

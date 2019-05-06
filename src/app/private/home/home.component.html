@@ -7,13 +7,13 @@
   </h3>
   <form [formGroup]="queryForm">
     <mat-form-field>
-      <input type="text" matInput formControlName="query" (onBlur)="updateData()"/>
+      <input type="text" matInput formControlName="query" (blur)="updateData()"/>
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
   </form>
   <br />
-  <ngx-twitter-timeline
-    [data]="mountData()"
-    [opts]="{ tweetLimit: 5 }"
-  ></ngx-twitter-timeline>
+  <ngx-twitter-timeline *ngIf="load"
+	[data]="data"
+	[opts]="{tweetLimit: 5}"
+></ngx-twitter-timeline>
 </div>

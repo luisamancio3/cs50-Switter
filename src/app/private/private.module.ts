@@ -20,6 +20,6 @@ import { PrivateComponent } from "./private.component";
     FormsModule
   ],
   exports: [PrivateComponent],
-  providers: []
+  providers: [],
 })
 export class PrivateModule {}
