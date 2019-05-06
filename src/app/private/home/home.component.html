@@ -1,0 +1,19 @@
+<sw-private></sw-private>
+
+<div class="flex-column-center">
+  <h1 class="text-center">Welcome to switter</h1>
+  <h3 class="text-center">
+    Here you can search any users on twitter
+  </h3>
+  <form [formGroup]="queryForm">
+    <mat-form-field>
+      <input type="text" matInput formControlName="query" (onBlur)="updateData()"/>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </form>
+  <br />
+  <ngx-twitter-timeline
+    [data]="mountData()"
+    [opts]="{ tweetLimit: 5 }"
+  ></ngx-twitter-timeline>
+</div>

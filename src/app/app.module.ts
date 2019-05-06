@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { PrivateModule } from './private/private.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
     AppRoutingModule,
     BrowserAnimationsModule,
     PublicModule,
+    PrivateModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { auth } from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { User } from "firebase";
 
@@ -24,7 +23,7 @@ export class AuthService {
   async login(email: string, password: string) {
     try {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      this.router.navigateByUrl(``);
+      this.router.navigateByUrl(`/private/home`);
     } catch (e) {
       alert("Error!" + e.message);
     }
@@ -36,9 +35,9 @@ export class AuthService {
     this.router.navigateByUrl(`login`);
   }
 
-  get isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem("user"));
-    return user !== null;
+    return this.afAuth.authState !== null;
   }
 
   async register(email: string, password: string){
